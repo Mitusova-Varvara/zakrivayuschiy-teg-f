@@ -45,7 +45,7 @@
   color: var(--text-color);
   background-color: var(--bg-card-color);
   border: var(--border);
-  font-family: var(--accent-font), system-ui;
+  font-family: var(--accent-font), fantasy;
   text-transform: uppercase;
 }
 
@@ -101,17 +101,18 @@
   top: 27px;
   right: 27px;
   z-index: 2;
-  font-family: var(--accent-font), system-ui;
+  font-family: var(--accent-font), fantasy;
   font-size: 14px;
   color: var(--text-color);
   opacity: 0.5;
   text-transform: uppercase;
   -webkit-text-stroke: 1px #fff;
+  text-shadow: 1px #fff;
   mix-blend-mode: hard-light;
 }
 
-@supports (text-stroke: 1px #fff) {
-  span {
+@supports (text-stroke: 1px #fff) or (-webkit-text-stroke: 1px #fff) {
+  .accent-word {
     text-stroke: 1px #fff;
   }
 }
@@ -121,6 +122,7 @@
   inline-size: 100%;
   block-size: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 .image-sepia {
@@ -173,7 +175,7 @@
 .card__like-button {
   padding-block: 10px;
   inline-size: 130px;
-  font-family: var(--accent-font), system-ui;
+  font-family: var(--accent-font), fantasy;
   font-size: 14px;
   background-color: var(--bg-card-color);
   border: var(--border);
@@ -189,7 +191,7 @@
   margin-block-start: 45px;
   margin-block-end: 100px;
   padding: 17px;
-  font-family: var(--accent-font), system-ui;
+  font-family: var(--accent-font), fantasy;
   font-size: 14px;
   max-width: fit-content;
 }
@@ -204,12 +206,15 @@
 }
 
 .like-icon {
-  inline-size: 40px;
-  inset-block: 40px;
+  inline-size: 37px;
+  inset-block: 37px;
   cursor: pointer;
 }
 
 .card__icon-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 0px;
   border: none;
   background-color: transparent;
@@ -222,7 +227,6 @@
 
 .card__icon-button:focus-visible {
   outline: 2px solid var(--accent-color);
-  outline-offset: 1px;
 }
 
 .dialog {
@@ -236,12 +240,12 @@
   align-items: center;
   gap: 30px;
   inline-size: 353px;
-  block-size: 191px;
   border: var(--border);
 }
 
 .dialog[open]::backdrop {
-  backdrop-filter: brightness(30%);
+  background-color: var(--accent-color);
+  opacity: 0.75;
 }
 
 .dialog-wrapper {
@@ -257,9 +261,10 @@
 }
 
 .dialog-text {
-  font-family: var(--accent-font), system-ui;
+  font-family: var(--accent-font), fantasy;
   font-size: 14px;
   text-transform: uppercase;
+  line-height: 150%;
   inline-size: 234px;
 }
 
@@ -267,8 +272,9 @@
   padding: 12px 132px;
   background-color: var(--bg-card-color);
   color: var(--text-color);
-  font-family: var(--accent-font), system-ui;
+  font-family: var(--accent-font), fantasy;
   font-size: 14px;
+  text-transform: uppercase;
   border: var(--border);
 }
 
@@ -348,29 +354,29 @@ body:has(.dialog[open]) {
 
 .like-icon:hover .core {
   fill: var(--fill-color);
-  transition-duration: none;
+  transition-delay: 0s;
 }
 
 .like-icon:hover .main-body {
   fill: var(--fill-color);
-  transition-duration: 0.05s;
+  transition-delay: 0.05s;
 }
 
 .like-icon:active .core,
 .like-icon.is-liked .core {
   fill: var(--contour-color);
-  transition-duration: none;
+  transition-delay: 0s;
 }
 
 .like-icon:active .main-body,
 .like-icon.is-liked .main-body {
   fill: var(--contour-color);
-  transition-duration: 0.05s;
+  transition-delay: 0.05s;
 }
 
 .like-icon.is-liked .contour {
   fill: var(--contour-color);
-  transition-duration: 0.06s;
+  transition-delay: 0.06s;
 }
 
 .like-icon.is-liked {
