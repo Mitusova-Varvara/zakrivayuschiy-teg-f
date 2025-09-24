@@ -106,7 +106,6 @@
   color: var(--text-color);
   opacity: 0.5;
   text-transform: uppercase;
-  -webkit-text-stroke: 1px #fff;
   text-shadow: 1px #fff;
   mix-blend-mode: hard-light;
 }
@@ -114,6 +113,8 @@
 @supports (text-stroke: 1px #fff) or (-webkit-text-stroke: 1px #fff) {
   .accent-word {
     text-stroke: 1px #fff;
+    -webkit-text-stroke: 1px #fff;
+    text-shadow: none;
   }
 }
 
@@ -256,8 +257,8 @@
 }
 
 .dialog-icon {
-  inline-size: 40px;
-  block-size: 40px;
+  inline-size: 39px;
+  block-size: 39px;
 }
 
 .dialog-text {
@@ -307,6 +308,7 @@ body:has(.dialog[open]) {
   position: relative;
   z-index: 3;
   mix-blend-mode: difference;
+  transition: mix-blend-mode 0.3s;
 }
 
 .button::before {
